@@ -45,19 +45,4 @@ public class Position {
         j = tj;
         return true;
     }
-
-    public boolean setPosition(int i, int j) {
-        Position position=this;
-
-        boolean valid;
-        // check validity of indices
-        valid = position.validI(i) && position.validJ(j);
-        if (!valid) return false;
-
-        // check validity of "walls"
-        valid = maze.isWall(position);
-        if (!valid) return false;
-
-        return false;
-    }
 }
