@@ -6,20 +6,34 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello maze!");
 
-        String level1 =
-                "PWW\n" +
-                        "--W\n" +
-                        "W-W\n" +
-                        "WEW\n";
+        String level1 = """
+                PWW
+                --W
+                W-W
+                WEW""";
+
         Maze maze = new Maze();
 
         maze.load(level1);
-        Scanner in = new Scanner(System.in);
+
+        final Scanner in = new Scanner(System.in);
+
         Position pos = maze.getPlayerPosition();
+
         maze.draw();
-        while (!maze.isEnd(pos)) {
-            System.out.print("WASD direction? ");
+
+        while (true) {
+
+            boolean endReached = maze.isEnd(pos);
+            if (endReached) {
+                System.out.println("maze endReached reached!");
+                break;
+            }
+
+            System.out.print("WASD direction? (or exit) ");
             String action = in.nextLine();
+            if (action.equals("exit")) break;
+
             int di = 0, dj = 0;
             switch (action) {
                 case "w" -> di--;
@@ -28,9 +42,11 @@ public class Main {
                 case "d" -> dj++;
             }
             pos.delta(di, dj);
+
             maze.draw();
-            System.out.println("");
+
         }
-        System.out.println("end reached! exiting...");
+        System.out.println("exiting...");
+        in.close();
     }
 }

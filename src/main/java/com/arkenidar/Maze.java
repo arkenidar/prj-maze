@@ -15,17 +15,19 @@ public class Maze {
         for (int i = 0; i < lines.length; i++) {
             String line = lines[i];
             char[] row = line.toCharArray();
-            for(int j=0; j<row.length; j++)
-                if(row[j]=='P'){
-                    playerPosition=new Position(i,j,this);
-                    row[j]='-';
+            for (int j = 0; j < row.length; j++)
+                if (row[j] == 'P') {
+                    playerPosition = new Position(i, j, this);
+                    row[j] = '-';
                 }
             grid[i] = row;
         }
     }
 
     void draw() {
-        Position position=playerPosition;
+        System.out.println();
+
+        Position position = playerPosition;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
                 char out;
@@ -37,6 +39,8 @@ public class Maze {
             }
             System.out.println("");
         }
+
+        System.out.println();
     }
 
     public int getSizeI() {
