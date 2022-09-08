@@ -26,7 +26,7 @@ public class Main {
 
             boolean endReached = maze.isEnd(pos);
             if (endReached) {
-                System.out.println("maze endReached reached!");
+                System.out.println("maze end reached!");
                 break;
             }
 
